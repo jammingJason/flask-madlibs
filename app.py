@@ -1,5 +1,13 @@
-"""Madlibs Stories."""
+from flask import Flask, request, render_template
+from flask_debugtoolbar import DebugToolbarExtension
+from random import randint, choice, sample
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'something'
+
+debug = DebugToolbarExtension(app)
+
+"""Madlibs Stories."""
 
 class Story:
     """Madlibs story.
@@ -20,15 +28,13 @@ class Story:
 
     def __init__(self, words, text):
         """Create story with words and template text."""
-
         self.prompts = words
         self.template = text
+        
 
     def generate(self, answers):
         """Substitute answers into text."""
-
         text = self.template
-
         for (key, val) in answers.items():
             text = text.replace("{" + key + "}", val)
 
@@ -37,9 +43,22 @@ class Story:
 
 # Here's a story to get you started
 
-
 story = Story(
     ["place", "noun", "verb", "adjective", "plural_noun"],
     """Once upon a time in a long-ago {place}, there lived a
        large {adjective} {noun}. It loved to {verb} {plural_noun}."""
 )
+
+# s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
+# stories = [story, s]
+# # pick_a_story = story
+ans = {story[0]}
+
+@app.route('/')
+def go_home():
+    return render_template('madlibs.html', story=story, ans=ans)
+
+@app.route('/buildMadlibs')
+def go_madlibs():
+    return render_template('buildMadlibs.html', story = s)
+
