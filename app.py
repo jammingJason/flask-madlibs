@@ -49,19 +49,20 @@ story = Story(
        large {adjective} {noun}. It loved to {verb} {plural_noun}.""")
 s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
 t = Story(["noun", "clothing"], "I walk around my {noun} in my {clothing}.")
-stories = [story, s, t]
+stories = [s,t,story]
 pick_a_story = choice(stories)
-ans = (pick_a_story.prompts)
 str_temp = (pick_a_story.template)
-for item in stories:
-    str_option = str(item)
-    list_options = [str_option]
+obj_new = []
+for madlib in stories:
+    obj_new.append(str(madlib.template)[:10])
+    
 @app.route('/')
 def go_home():
     if request.args:
         str_story = request.args.get('storyID') 
-        return render_template('madlibs.html', story=pick_a_story, ans=ans)
-    return render_template('madlibs.html', stories=list_options)
+        ans = (stories[int(str_story)].prompts)
+        return render_template('madlibs.html', ans=ans)
+    return render_template('madlibs.html', stories=obj_new)
 
 
 @app.route('/buildMadlibs')
@@ -70,5 +71,8 @@ def go_madlibs():
     for req in request.args:
         new_obj[req] = request.args[req]
     # return new_obj
-    return render_template('buildMadlibs.html', what=new_obj, story=pick_a_story)
+    return render_template('buildMadlibs.html', what=new_obj, story=stories[int(request.args['storyID'])])
 
+@app.route('/createStory')
+def create_madlib():
+    return render_template('createMadlibs.html')

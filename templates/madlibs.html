@@ -2,14 +2,21 @@
 <title>{% block title %}Madlibs{% endblock %}</title>
 {% block content %}
 <h1>Madlibs!</h1>
-<div class="div col-3">
-    <select name="slcStory" id="slcStory" class="form-select">
-        <option value="" selected>Please select a story</option>
-        {% for story in stories %}
-        <option value={{stories.index(story)}}>{{story}}</option>
-        {% endfor %}
-    </select>
+<div class="div col-4"></div>
+<div class="div col-4" id="selectDiv">
+    {% if not request.args %}
+    <form action="/" method="get" name="frmMain" id="frmMain">
+        <select name="storyID" id="slcStory" class="form-select form-select-lg"
+            onchange=javascript:document.frmMain.submit()>
+            <option value="" selected>Please select a story</option>
+            {% for story in stories %}
+            <option value={{stories.index(story)}}>{{story}}</option>
+            {% endfor %}
+        </select>
+    </form>
+    {% endif %}
 </div>
+<div class="div col-4"></div>
 <hr>
 <div class="div container">
     <div class="div row">
@@ -25,12 +32,15 @@
                     </td>
                 </tr>
                 {% endfor %}
-                </p>
+
+                {% if request.args %}
+                <input type="hidden" name="storyID" id="storyID" value="{{request.args.get('storyID')}}">
                 <tr>
                     <td colspan="2" align="center">
                         <button class="btn btn-success">Create Madlib</button>
                     </td>
                 </tr>
+                {% endif %}
             </form>
         </table>
     </div>

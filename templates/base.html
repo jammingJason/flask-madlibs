@@ -12,14 +12,23 @@
 </head>
 
 <body>
-    <nav class=navbar>
-        <a href="/" id="ancTag">Home</a>
-    </nav>
+    <div class="container">
+        <div class="row menuHolder">
+            <div class="col menuHolder">
+                <nav class=navbar>
+                    <a href="/" class="ancTag">Home</a>
+                    <a href="/createStory" class="ancTag">Create Madlib!</a>
+                </nav>
+            </div>
+        </div>
+    </div>
     <main id="content">
-        <div class="div row">
-            {% block content %}
+        <div class="container">
+            <div class="div row">
+                {% block content %}
 
-            {% endblock %}
+                {% endblock %}
+            </div>
         </div>
     </main>
     <script src="/static/app.js"></script>

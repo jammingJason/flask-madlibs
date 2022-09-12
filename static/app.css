@@ -2,23 +2,61 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#ancTag {
-    text-decoration: none;
-    padding: 5px;
-    color: green;
+#slcStory {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-#ancTag:hover {
-    background-color: green;
+.form-control {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    width: 100px
+}
+
+#txtItem {
+    width: 20rem;
+}
+
+.ancTag {
+    text-decoration: none;
+    text-align: left;
+    padding: 5px;
     color: whitesmoke;
 }
 
+.navbar {
+    background-color: #28a745;
+    color: whitesmoke;
+    margin: 0%;
+}
+
+#selectDiv {
+    justify-content: center;
+    align-content: center;
+}
+
+.menuHolder {
+    margin: 0%;
+    padding: 0%;
+}
+
+p {
+    padding: 15px;
+    color: gre#28a745en;
+    text-align: center;
+}
+
+.ancTag:hover {
+    background-color: whitesmoke;
+    color: #28a745;
+}
+
 .formItems {
-    color: green
+    color: #28a745
 }
 
 h1 {
-    color: green;
+    color: #28a745;
     text-align: center;
 }
 
@@ -27,5 +65,5 @@ td {
 }
 
 .lableItem {
-    color: green;
+    color: #28a745;
 }

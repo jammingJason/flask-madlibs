@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<title>{% block title %}Create Madlibs!{% endblock %}</title>
+{% block content %}
+<div class="div col">
+    <h1>Create Madlibs!</h1>
+</div>
+<hr>
+<div class="div col">
+    <label for="txtItem">Please enter the item you would like to place in the Madlib</label>
+    <input type="text" name="   " id="txtItem" placeholder="Ex: Adjective" class="form-control">
+    <button type="button" class="btn btn-success">Add item</button>
+</div>
+<div>
+    <textarea name="txtArea" id="txtArea" cols="30" rows="10" placeholder="Enter your Madlib here!"></textarea>
+
+</div>
+<hr>
+{% endblock %}
