@@ -2,16 +2,38 @@
 <title>{% block title %}Madlibs{% endblock %}</title>
 {% block content %}
 <h1>Madlibs!</h1>
-
+<div class="div col-3">
+    <select name="slcStory" id="slcStory" class="form-select">
+        <option value="" selected>Please select a story</option>
+        {% for story in stories %}
+        <option value={{stories.index(story)}}>{{story}}</option>
+        {% endfor %}
+    </select>
+</div>
 <hr>
-<form method="GET" name="frmBuild" action="/buildMadlibs">
-    {% for item in ans %}
-    <label for={{item}}>{{item.capitalize()}} : </label>
-    <input type="text" name={{item}}>
-    <br>
-    {% endfor %}
-    </p>
-    <button>Create Madlib</button>
-</form>
+<div class="div container">
+    <div class="div row">
+        <table>
+            <form method="GET" name="frmBuild" action="/buildMadlibs" class="form">
+                {% for item in ans %}
+                <tr>
+                    <td align="right" width="50%">
+                        <label for={{item}} class="lableItem">{{item.capitalize().replace('_', ' ')}} : </label>
+                    </td>
+                    <td>
+                        <input type="text" name={{item}}>
+                    </td>
+                </tr>
+                {% endfor %}
+                </p>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button class="btn btn-success">Create Madlib</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</div>
 <hr>
 {% endblock %}

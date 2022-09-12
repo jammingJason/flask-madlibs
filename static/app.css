@@ -1,0 +1,31 @@
+:root {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#ancTag {
+    text-decoration: none;
+    padding: 5px;
+    color: green;
+}
+
+#ancTag:hover {
+    background-color: green;
+    color: whitesmoke;
+}
+
+.formItems {
+    color: green
+}
+
+h1 {
+    color: green;
+    text-align: center;
+}
+
+td {
+    padding: 5px;
+}
+
+.lableItem {
+    color: green;
+}

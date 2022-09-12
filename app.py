@@ -46,19 +46,29 @@ class Story:
 story = Story(
     ["place", "noun", "verb", "adjective", "plural_noun"],
     """Once upon a time in a long-ago {place}, there lived a
-       large {adjective} {noun}. It loved to {verb} {plural_noun}."""
-)
-
-# s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
-# stories = [story, s]
-# # pick_a_story = story
-ans = {story[0]}
-
+       large {adjective} {noun}. It loved to {verb} {plural_noun}.""")
+s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
+t = Story(["noun", "clothing"], "I walk around my {noun} in my {clothing}.")
+stories = [story, s, t]
+pick_a_story = choice(stories)
+ans = (pick_a_story.prompts)
+str_temp = (pick_a_story.template)
+for item in stories:
+    str_option = str(item)
+    list_options = [str_option]
 @app.route('/')
 def go_home():
-    return render_template('madlibs.html', story=story, ans=ans)
+    if request.args:
+        str_story = request.args.get('storyID') 
+        return render_template('madlibs.html', story=pick_a_story, ans=ans)
+    return render_template('madlibs.html', stories=list_options)
+
 
 @app.route('/buildMadlibs')
 def go_madlibs():
-    return render_template('buildMadlibs.html', story = s)
+    new_obj = {}
+    for req in request.args:
+        new_obj[req] = request.args[req]
+    # return new_obj
+    return render_template('buildMadlibs.html', what=new_obj, story=pick_a_story)
 

@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 <title>{% block title %}Madlibs{% endblock %}</title>
 {% block content %}
-<h1>Madlibs!</h1>
+<div class="div col">
+    <h1>Madlibs!</h1>
+</div>
 <hr>
-<p>
-    {% if request.args %}
-    {{story.generate(request.args)}}
-    {% endif %}
-</p>
+<div class="div col">
+    <p class="lead">
+        {% if request.args %}
+        {{story.generate(what)}}
+        {% endif %}
+    </p>
+</div>
 <hr>
 {% endblock %}
