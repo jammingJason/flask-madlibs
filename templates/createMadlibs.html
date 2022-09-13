@@ -8,11 +8,14 @@
 <div class="div col">
     <label for="txtItem">Please enter the item you would like to place in the Madlib</label>
     <input type="text" name="   " id="txtItem" placeholder="Ex: Adjective" class="form-control">
-    <button type="button" class="btn btn-success">Add item</button>
+    <button type="button" class="btn btn-success" id="addItem">Add item</button>
 </div>
-<div>
-    <textarea name="txtArea" id="txtArea" cols="30" rows="10" placeholder="Enter your Madlib here!"></textarea>
-
+<div class="div col">
+    <form action="/createMadlib" method="POST" name="frmMain" id="frmMain">
+        <input type="hidden" name="txtWords" id="txtWords">
+        <textarea name="txtArea" id="txtArea" cols="30" rows="10" placeholder="Enter your Madlib here!"></textarea>
+        <button type="button" class="btn btn-success" id="subitMadlib">Submit Madlib!</button>
+    </form>
 </div>
 <hr>
 {% endblock %}

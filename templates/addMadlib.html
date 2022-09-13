@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<title>{% block title %}Create a new Madlib{% endblock %}</title>
+{% block content %}
+<div class="div col">
+    <h1>Create New Madlibs!</h1>
+</div>
+<hr>
+<div class="div col">
+    {{ml}}
+    <p class="lead">
+        {{words}}
+    </p>
+    <p class="lead">
+        {{new_story}}
+    </p>
+</div>
+<hr>
+{% endblock %}

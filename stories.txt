@@ -1,0 +1,3 @@
+[verb,place], I want to  { verb } in the  { place } 
+[verb,animal], One time I was  { verb } and I thought I saw a  { animal } 
+[person,verb,animal], One time I was with  { person } and I saw them  { verb } a  { animal }  in the mouth.

@@ -41,6 +41,12 @@ class Story:
         return text
 
 
+def get_story():
+    list_stories = []
+    f = open("stories.txt", "r")
+    for x in f:
+        list_stories.append(x.replace('\n', ''))
+    return (list_stories)
 # Here's a story to get you started
 
 story = Story(
@@ -49,9 +55,8 @@ story = Story(
        large {adjective} {noun}. It loved to {verb} {plural_noun}.""")
 s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
 t = Story(["noun", "clothing"], "I walk around my {noun} in my {clothing}.")
+print(get_story())
 stories = [s,t,story]
-pick_a_story = choice(stories)
-str_temp = (pick_a_story.template)
 obj_new = []
 for madlib in stories:
     obj_new.append(str(madlib.template)[:10])
@@ -76,3 +81,14 @@ def go_madlibs():
 @app.route('/createStory')
 def create_madlib():
     return render_template('createMadlibs.html')
+
+@app.route('/createMadlib', methods=["POST"])
+def create_new_madlib():
+    comment = request.form["txtArea"]
+    words = request.form["txtWords"]
+    new_story = Story(words,comment)
+    
+    x = open('stories.txt', 'a')
+    x.write( f"[{words}], {comment}\n")
+    x.close()
+    return render_template('addMadlib.html', ml=comment, words=words, new_story=new_story)
