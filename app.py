@@ -42,11 +42,26 @@ class Story:
 
 
 def get_story():
-    list_stories = []
     f = open("stories.txt", "r")
+    stories_from_file=[]
     for x in f:
+        # another_story = None
+        # stories_from_file = []
+        list_stories = []
+        arr_stories = ''
+        temp_prompt = ''
+        prompt =[]
+        template = ''
         list_stories.append(x.replace('\n', ''))
-    return (list_stories)
+        arr_stories = list_stories[0].split('],')
+        temp_prompt = arr_stories[0].split(',')
+        for temps in temp_prompt:
+            prompt.append(str(temps).replace('[',''))
+        template = arr_stories[1]
+        another_story = Story(prompt, template)
+        stories_from_file.append(another_story)
+        # print(prompt)
+    return (stories_from_file)
 # Here's a story to get you started
 
 story = Story(
@@ -55,8 +70,8 @@ story = Story(
        large {adjective} {noun}. It loved to {verb} {plural_noun}.""")
 s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
 t = Story(["noun", "clothing"], "I walk around my {noun} in my {clothing}.")
-print(get_story())
-stories = [s,t,story]
+
+stories = get_story()
 obj_new = []
 for madlib in stories:
     obj_new.append(str(madlib.template)[:10])
@@ -72,9 +87,7 @@ def go_home():
 
 @app.route('/buildMadlibs')
 def go_madlibs():
-    new_obj = {}
-    for req in request.args:
-        new_obj[req] = request.args[req]
+    new_obj = request.args
     # return new_obj
     return render_template('buildMadlibs.html', what=new_obj, story=stories[int(request.args['storyID'])])
 

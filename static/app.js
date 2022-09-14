@@ -6,11 +6,11 @@ strWords = document.querySelector('#txtWords')
 arrItems = []
 btnAddItem.addEventListener('click', function(evt){
     evt.preventDefault()
-    strMadlib = strValue.value + ' { ' +strItem.value.toLowerCase()+' } '
+    strMadlib = strValue.value + ' {' +strItem.value.toLowerCase()+'} '
     strValue.value = strMadlib
     arrItems.push(strItem.value.toLowerCase())
     strItem.value = ''
-    alert(arrItems)
+    // alert(arrItems)
 })
 
 
